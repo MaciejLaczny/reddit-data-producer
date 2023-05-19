@@ -1,0 +1,3 @@
+api:
+  listingUrl: "https://oauth.reddit.com/r/politics/new"
+  commentsUrl: "https://oauth.reddit.com/r/politics/comments/"

@@ -1,0 +1,27 @@
+org:
+  springframework:
+    web:
+      filter:
+        CommonsRequestLoggingFilter: DEBUG
+server:
+  port: '9090'
+
+api:
+  username: "u/MtechL"
+  password: "Sertyafting765"
+  appId: "ImCmUsWs5MyEZosqYTZRGg"
+  secret: "IlfJlvpkT_Kcb3RH9fG8iLKIj_AdDQ"
+  userAgent: "rPipe/0.0.1 u/MtechL"
+  listingUrl: "https://oauth.reddit.com/r/news/new"
+  commentsUrl: "https://oauth.reddit.com/r/news/comments/"
+  tokenUrl: "https://www.reddit.com/api/v1/access_token"
+  grantType: "client_credentials"
+
+spring:
+  kafka:
+    producer:
+      topic: test
+     #topic: elements.analysis
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
