@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Service
 public class ElementExtractor {
-    public ListingElementContent eldest(List<ListingElementContent> elements) {
+    public ListingElementContent earliest(List<ListingElementContent> elements) {
         return elements.stream()
                 .filter(e -> Objects.nonNull(e.fullName()))
                 .min(Comparator.comparingLong(ListingElementContent::ts))

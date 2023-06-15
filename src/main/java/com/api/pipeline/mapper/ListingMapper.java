@@ -2,12 +2,10 @@ package com.api.pipeline.mapper;
 
 import com.api.pipeline.model.ArticleCommentMessage;
 import com.api.pipeline.model.Listing;
-import com.api.pipeline.model.ListingElement;
 import com.api.pipeline.model.ListingElementContent;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -28,19 +26,13 @@ public class ListingMapper {
             return mapToLinksListing(body);
         }
     }
-    public List<ArticleCommentMessage> mapArticleWithComments(ListingElementContent article, List<ListingElement> comments) {
+    public List<ArticleCommentMessage> mapArticleWithComments(ListingElementContent article, List<ListingElementContent> comments) {
         return comments.stream()
-                .map(ListingElement::content)
                 .map(e -> ArticleCommentMessage.builder()
                         .articleId(article.fullName())
                         .articleTitle(article.body())
                         .comment(e.body())
                         .build())
-                .toList();
-    }
-    public List<ListingElementContent> mapListingElement(List<ListingElement> articles) {
-        return articles.stream()
-                .map(ListingElement::content)
                 .toList();
     }
 
@@ -50,7 +42,6 @@ public class ListingMapper {
 
     private Listing mapToLinksListing(String rs) {
         return uncheckJsonException(readSingleListing(rs));
-
     }
 
     private Callable<Listing> readArrayListing(String rs) {

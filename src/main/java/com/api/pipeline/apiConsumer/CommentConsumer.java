@@ -22,7 +22,7 @@ public class CommentConsumer {
     private String recentArticle = null;
     public List<ArticleCommentMessage> fetchComments(){
         List<ListingElementContent> articles = articleConsumer.fetchArticles(recentArticle);
-        var eldestArticle = extractor.eldest(articles);
+        var eldestArticle = extractor.earliest(articles);
         this.recentArticle = eldestArticle.fullName();
         var commentsRequest = requestFactory.createRequest(config.commentsUri(recentArticle));
         var comments = listingConsumer.fetchListing(commentsRequest);
